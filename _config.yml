@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: YuYanzy
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
+author: YuYanzy
+language: zh-cn
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
+# url: http://example.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -103,4 +103,6 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: github
+  repository: git@github.com:YuYanzy/YuYanzy.github.io.git
+  branch: master
