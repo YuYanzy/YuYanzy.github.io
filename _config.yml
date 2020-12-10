@@ -9,6 +9,8 @@ menu:
 # 是否显示目录
 TOC: false
 
+theme: diaspora
+
 # 是否自动播放音乐
 autoplay: false
 
