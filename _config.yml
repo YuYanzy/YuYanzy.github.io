@@ -92,3 +92,8 @@ favicon: /img/favicon.png
 
 # rss文件
 rss: atom.xml
+
+deploy:
+    type: git
+    repository: https://github.com/YuYanzy/YuYanzy.github.io.git
+    branch: master
