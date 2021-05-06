@@ -15,7 +15,7 @@ style:
 ########## 关于主页的设置 ##########
 # home页可选类型
 home:
-  type: "img" # 主页的类型，可选 home | img | simple
+  type: "home" # 主页的类型，可选 home | img | simple
 
 # archive页可选类型
 archive:
@@ -48,8 +48,8 @@ archive_img_mode:
 # icon
 icon:  #标签页图标
 #  header
-site_name: white.
-site_description: A minimalist theme for hexo. #The default meta description for all the meta descriptions
+site_name: 宇言的小木屋
+site_description: 宇言的思想存放之处。#The default meta description for all the meta descriptions
 #Add description property to any page to change the meta description
 menu:
   HOME: /
@@ -65,19 +65,19 @@ search:
 
 # 自我介绍
 intro:
-  title: Hi.I'm White.
-  sub: 'A [White](https://github.com/FuShaoLei/hexo-theme-white) theme for [Hexo](http://hexo.io/)' # markdown语法
+  title: Hi! 我是 宇言
+  sub: 世界上任何书籍都不能带给你好运，但它们能让你悄悄成为你自己。 —— 赫尔曼.黑塞 # markdown语法
   avator: https://cdn.jsdelivr.net/gh/fushaolei/img/20200524104925.jpg #头像 暂时还没用到
-  author: white #所有文章的默认作者
+  author: 宇言 #所有文章的默认作者
 
 #联系方式
 #更多图标：https://remixicon.com/
 contact:
   Github:
-    - https://github.com/FuShaoLei/hexo-theme-white
+    - https://github.com/YuYanzy
     - ri-github-line
   Email:
-    - mailto:1563250958@qq.com
+    - mailto:zhang_steven@outlook.com
     - ri-mail-line
 
 
@@ -131,7 +131,7 @@ pagination:
 ############## 其他 ##############
 
 # 页脚
-footer: Power by [Hexo](http://hexo.io/) Theme by [White](https://github.com/FuShaoLei/hexo-theme-white) # markdown语法
+footer: 逍遥须无欲，快意从清虚。恬淡真性地，妙趣见天机。 # markdown语法
 
 #有分类时是否开启menu分类页和自定义名字
 menu_categories:
