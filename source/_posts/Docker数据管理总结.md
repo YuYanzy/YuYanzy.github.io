@@ -1,11 +1,9 @@
 ---
-title:Docker Data Manage
+title: Docker Data Manage
 date: 2021-05-06 
 tags: [技术，Docker]
 categories: 技术
 ---
-
-
 在Docker Container中 Data有两种存在的状态。
 
 状态一： 写入容器的数据
