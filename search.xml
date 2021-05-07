@@ -94,7 +94,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker Data Manage</title>
+    <title>初识 Kafka</title>
     <url>/2021/05/07/%E5%88%9D%E8%AF%86Kafka/</url>
     <content><![CDATA[<p>今天花了一下午时间初步了解了一下Kafka。</p>
 <p>首先非常感谢朋友 <a href="https://github.com/Ecohnoch">@Ecohnoch</a>  提供的讲解材料和 <a href="git@github.com:Ecohnoch/kafka-python-demo.git">Python Demo</a>。如果读者对Kafka也感兴趣，建议在看完本文之后，也移步 <a href="https://github.com/Ecohnoch/kafka-python-demo">Demo</a>，运行感受一下 Kafka 的消息分发机制。</p>
