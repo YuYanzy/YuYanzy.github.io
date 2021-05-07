@@ -1,0 +1,230 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  Docker Data Manage |    宇言的小木屋</title>
+  <meta name="description" content="宇言的思想存放之处。#The default meta description for all the meta descriptions">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          宇言的小木屋
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
+             分类
+             <div class="categories-outer " id="sort-div">
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+             </div>
+          </li>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        宇言的小木屋
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">Docker Data Manage</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">5月 07 2021</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <p>今天花了一下午时间初步了解了一下Kafka。</p>
+<p>首先非常感谢朋友 <a target="_blank" rel="noopener" href="https://github.com/Ecohnoch">@Ecohnoch</a>  提供的讲解材料和 <a href="git@github.com:Ecohnoch/kafka-python-demo.git">Python Demo</a>。如果读者对Kafka也感兴趣，建议在看完本文之后，也移步 <a target="_blank" rel="noopener" href="https://github.com/Ecohnoch/kafka-python-demo">Demo</a>，运行感受一下 Kafka 的消息分发机制。</p>
+<p>初识 Kafka 要解决的第一个问题是： <strong>什么是 Kafka？</strong></p>
+<h2 id="Kafka的定义及作用"><a href="#Kafka的定义及作用" class="headerlink" title="Kafka的定义及作用"></a>Kafka的定义及作用</h2><p>我们可以首先来参考一下维基百科对 Kafka 的一句话定义。</p>
+<blockquote>
+<p><strong>Kafka</strong>是由<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Apache%E8%BD%AF%E4%BB%B6%E5%9F%BA%E9%87%91%E4%BC%9A">Apache软件基金会</a>开发的一个<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BC%80%E6%BA%90">开源</a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%B5%81%E5%A4%84%E7%90%86">流处理</a>平台，由<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Scala">Scala</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Java">Java</a>编写。该项目的目标是为处理实时数据提供一个统一、高吞吐、低延迟的平台。其持久化层本质上是一个“按照分布式事务日志架构的大规模发布/订阅消息队列”，[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Kafka#cite_note-3">3]</a>这使它作为企业级基础设施来处理流式数据非常有价值。</p>
+<p>—— From 维基百科</p>
+</blockquote>
+<p>在这句话中，我们运用初高中学习的语文缩写方法，提取出主谓宾，可以得到：<font color="#dd0000">“ <strong>Kafka 是一个 消息队列</strong>” </font>这样的关键信息。所以，想要理解 kafka 是什么，我们需要先知道什么是 <strong>消息队列</strong>。关于消息队列的定义，推荐一篇在google上查到的<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1006035">文章</a>，建议先移步阅读，理解消息队列的定义，意义和作用，常用的应用场景和主流的软件（Kaf）。</p>
+<p>如果你认真阅读了这篇文章，基本上已经解决了 Kafka 的定义和作用两个关键的问题。</p>
+<p>接下来只需要明白 Kafka 中定义的一些概念，即便不知道如何运行 Kafka 和 Python 调用 Kafka 的语法，也已经掌握了 Kafka 的 essence （本质，要素，精髓）了。</p>
+<p>未完待续……</p>
+<hr>
+<h2 id="Kafka-的一些重要概念"><a href="#Kafka-的一些重要概念" class="headerlink" title="Kafka 的一些重要概念"></a>Kafka 的一些重要概念</h2><h2 id="Kafka-的Docker-运行教程"><a href="#Kafka-的Docker-运行教程" class="headerlink" title="Kafka 的Docker 运行教程"></a>Kafka 的Docker 运行教程</h2><h2 id="Kafka-python-的语法介绍"><a href="#Kafka-python-的语法介绍" class="headerlink" title="Kafka-python 的语法介绍"></a>Kafka-python 的语法介绍</h2>
+        <!-- 分类文章 -->
+        
+          <div class="post-categoris-bottom">
+            <div class="post-categoris-name">技术</div>
+            <ul>
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2021/05/06/Docker%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E6%80%BB%E7%BB%93/" class="post-categoris-bottom-link">
+                  Docker Data Manage
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2021/05/07/%E5%88%9D%E8%AF%86Kafka/" class="post-categoris-bottom-link">
+                  Docker Data Manage
+                </a>
+                </li>
+              
+              
+            
+            
+            </ul>
+
+          </div>
+
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Kafka%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E4%BD%9C%E7%94%A8"><span class="space-toc-text">Kafka的定义及作用</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Kafka-%E7%9A%84%E4%B8%80%E4%BA%9B%E9%87%8D%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="space-toc-text">Kafka 的一些重要概念</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Kafka-%E7%9A%84Docker-%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B"><span class="space-toc-text">Kafka 的Docker 运行教程</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Kafka-python-%E7%9A%84%E8%AF%AD%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">Kafka-python 的语法介绍</span></a></li></ol>
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>逍遥须无欲，快意从清虚。恬淡真性地，妙趣见天机。</p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/YuYanzy" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:zhang_steven@outlook.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+</body>
+</html>
