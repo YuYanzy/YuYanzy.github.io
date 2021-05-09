@@ -141,6 +141,9 @@
 <p>读到这里，你已经明白了消息队列数据流的完整概念了。即便你现在不会任何的 Kafka 语法，你也能读懂 Kafka 的数据流和代码逻辑了。当然，除此以外还会有一些更加细节的概念，比如 partition, replicator, 等等，但是这些都不会成为妨碍你理解 Kafka 数据流的障碍，只要遇到，查一下，就能明白了。</p>
 <h2 id="Kafka-的Docker-compose搭建"><a href="#Kafka-的Docker-compose搭建" class="headerlink" title="Kafka 的Docker-compose搭建"></a>Kafka 的Docker-compose搭建</h2><p>请参考 <a href="https://github.com/Ecohnoch/kafka-python-demo">Demo</a> 中的 <a href="https://github.com/Ecohnoch/kafka-python-demo/blob/main/kafka/docker-compose.yml">dokcer-compose.yml</a> 的写法。</p>
 <p>或者参考 Kafka 的 <a href="https://github.com/wurstmeister/kafka-docker">Docker Repo</a>。</p>
+<br/>
+
+<hr>
 <p>本来还想在这里记录一下 Python 调用 Kafka 和 Kafka 的配置。 但是写到这里之后又感觉不太需要了。</p>
 <p>还是那句话，只要知道了逻辑，语法只是查一下记住多写几遍就会了。如果读者对这方面还是有需求，依然可以移步我朋友的<a href="https://github.com/Ecohnoch/kafka-python-demo">Demo</a> ，看看源码，会发现非常简单。</p>
 <p>当然这也只是 Kafka 的入门教程，关于 Kafka 的配置和调校肯定还有很多高深的知识。这部分笔者也没有涉及过，待以后有机会参与到高并发的项目构建中，再来留下笔记。</p>
