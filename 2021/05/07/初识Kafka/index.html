@@ -130,10 +130,44 @@
 </blockquote>
 <p>在这句话中，我们运用初高中学习的语文缩写方法，提取出主谓宾，可以得到：<font color="#dd0000">“ <strong>Kafka 是一个 消息队列</strong>” </font>这样的关键信息。所以，想要理解 kafka 是什么，我们需要先知道什么是 <strong>消息队列</strong>。关于消息队列的定义，推荐一篇在google上查到的<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1006035">文章</a>，建议先移步阅读，理解消息队列的定义，意义和作用，常用的应用场景和主流的软件（Kaf）。</p>
 <p>如果你认真阅读了这篇文章，基本上已经解决了 Kafka 的定义和作用两个关键的问题。</p>
-<p>接下来只需要明白 Kafka 中定义的一些概念，即便不知道如何运行 Kafka 和 Python 调用 Kafka 的语法，也已经掌握了 Kafka 的 essence （本质，要素，精髓）了。</p>
-<p>未完待续……</p>
-<hr>
-<h2 id="Kafka-的一些重要概念"><a href="#Kafka-的一些重要概念" class="headerlink" title="Kafka 的一些重要概念"></a>Kafka 的一些重要概念</h2><h2 id="Kafka-的Docker-运行教程"><a href="#Kafka-的Docker-运行教程" class="headerlink" title="Kafka 的Docker 运行教程"></a>Kafka 的Docker 运行教程</h2><h2 id="Kafka-python-的语法介绍"><a href="#Kafka-python-的语法介绍" class="headerlink" title="Kafka-python 的语法介绍"></a>Kafka-python 的语法介绍</h2>
+<p>接下来只需要明白 Kafka 中定义的一些概念，即便不知道如何运行 Kafka 和 Python 调用 Kafka 的语法，也已经掌握了 Kafka 的 essence （本质，要素，精髓）了。 总结来说，Kafka 就是一个快递小哥，按设定的规则，把接到的快递单送给相应的客户。</p>
+<h2 id="Kafka-的一些重要概念"><a href="#Kafka-的一些重要概念" class="headerlink" title="Kafka 的一些重要概念"></a>Kafka 的一些重要概念</h2><h3 id="生产者-与-消费者"><a href="#生产者-与-消费者" class="headerlink" title="生产者 与 消费者"></a>生产者 与 消费者</h3><p>在 Kafka 的逻辑里面，每一条消息就像一个原料由用户生产，所以用户，或者说，用户发起请求的服务，即为生产者。对应的，接受用户请求去完成实际任务的服务，相当于消费了用户产生的消息，所以被称为消费者。</p>
+<p>总结对于消息队列而言，产生消息的就是生产者，处理消息的是消费者，传递的信息是消息本身。理清了一头一尾的数据源头之后，接下来要理解的是：数据传输的模式。</p>
+<h3 id="队列模式-与-发布-订阅模式"><a href="#队列模式-与-发布-订阅模式" class="headerlink" title="队列模式 与 发布/订阅模式"></a>队列模式 与 发布/订阅模式</h3><p>数据传输模式分为两种，一种称为 队列模式，一种称为 发布/订阅模式。</p>
+<ul>
+<li><p>队列模式</p>
+<p>顾名思义，队列模式就像队列数据结构一样。 生产者产生消息之后，消息入队；消费者读取消息，消息出队。</p>
+<p>这种模式的特点是：一条消息只能由一个消费者处理。</p>
+<p> 所以这种模式是一种单点对单点的传输模式，在上面那篇讲<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1006035">消息队列的文章</a>中，有清晰的描述。</p>
+
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://blog-10039692.file.myqcloud.com/1506330130593_2564_1506330132919.png" >
+        </sapn>
+      
+</li>
+<li><p>发布/订阅模式</p>
+<p>发布/订阅模式是为了解决上面队列模式只能单点传输的限制而被提出的。</p>
+<p>在发布/订阅模式中，引入了消息主题的概念。不同的消费者可以订阅同一主题的消息，当有这种主题的消息被生产之后，所有订阅过的消费者都可以接受到此消息。</p>
+<p>为了更好地理解这一点，我喜欢引入报纸的比喻。 生产者相当于生产报纸的工厂，主题相当于报纸的种类（北京日报，北京晨报，北京晚报之类的），消息队列相当于送报纸的小哥，接受者相当于报纸的订阅者。只要接受者订阅了北京日报，小哥就得把生产的北京日报报纸送给他，有100个人订阅了就得送100份。</p>
+
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://blog-10039692.file.myqcloud.com/1506330158945_9538_1506330161280.png" >
+        </sapn>
+      
+
+<p>需要单独说明的是：在 Kafka 中，还有消费者组的概念。一个消费者组由一到多个消费者组成，不同的消费者组可以订阅同一主题。同一主题产生的单条消息（比如消息A），会被传递给每一个订阅了此主题的消费者组。但是同一消费者组内部，只会有一个消费者去处理消息A。</p>
+</li>
+</ul>
+<p>读到这里，你已经明白了消息队列数据流的完整概念了。即便你现在不会任何的 Kafka 语法，你也能读懂 Kafka 的数据流和代码逻辑了。当然，除此以外还会有一些更加细节的概念，比如 partition, replicator, 等等，但是这些都不会成为妨碍你理解 Kafka 数据流的障碍，只要遇到，查一下，就能明白了。</p>
+<h2 id="Kafka-的Docker-compose搭建"><a href="#Kafka-的Docker-compose搭建" class="headerlink" title="Kafka 的Docker-compose搭建"></a>Kafka 的Docker-compose搭建</h2><p>请参考 <a target="_blank" rel="noopener" href="https://github.com/Ecohnoch/kafka-python-demo">Demo</a> 中的 <a target="_blank" rel="noopener" href="https://github.com/Ecohnoch/kafka-python-demo/blob/main/kafka/docker-compose.yml">dokcer-compose.yml</a> 的写法。</p>
+<p>或者参考 Kafka 的 <a target="_blank" rel="noopener" href="https://github.com/wurstmeister/kafka-docker">Docker Repo</a>。</p>
+<p>本来还想在这里记录一下 Python 调用 Kafka 和 Kafka 的配置。 但是写到这里之后又感觉不太需要了。</p>
+<p>还是那句话，只要知道了逻辑，语法只是查一下记住多写几遍就会了。如果读者对这方面还是有需求，依然可以移步我朋友的<a target="_blank" rel="noopener" href="https://github.com/Ecohnoch/kafka-python-demo">Demo</a> ，看看源码，会发现非常简单。</p>
+<p>当然这也只是 Kafka 的入门教程，关于 Kafka 的配置和调校肯定还有很多高深的知识。这部分笔者也没有涉及过，待以后有机会参与到高并发的项目构建中，再来留下笔记。</p>
+<p>感谢阅读！这种学完之后再记录一遍，对于我自己的提升也是非常大。如果有疑问或者是想要讨论的地方，欢迎随时联系我。Bye Bye!</p>
+
         <!-- 分类文章 -->
         
           <div class="post-categoris-bottom">
@@ -175,7 +209,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Kafka%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E4%BD%9C%E7%94%A8"><span class="space-toc-text">Kafka的定义及作用</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Kafka-%E7%9A%84%E4%B8%80%E4%BA%9B%E9%87%8D%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="space-toc-text">Kafka 的一些重要概念</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Kafka-%E7%9A%84Docker-%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B"><span class="space-toc-text">Kafka 的Docker 运行教程</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Kafka-python-%E7%9A%84%E8%AF%AD%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">Kafka-python 的语法介绍</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Kafka%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E4%BD%9C%E7%94%A8"><span class="space-toc-text">Kafka的定义及作用</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Kafka-%E7%9A%84%E4%B8%80%E4%BA%9B%E9%87%8D%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="space-toc-text">Kafka 的一些重要概念</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Kafka-%E7%9A%84Docker-compose%E6%90%AD%E5%BB%BA"><span class="space-toc-text">Kafka 的Docker-compose搭建</span></a></li></ol>
            </div>
         
       </div>
