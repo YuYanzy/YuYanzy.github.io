@@ -1,5 +1,8 @@
-db.json
-pa
-node_modules/
-public/
-*.DS_Store
+*.log
+.DS_Store
+.cache/
+node_modules
+dist
+.npmrc
+.yarnrc
+blog/drafts/
