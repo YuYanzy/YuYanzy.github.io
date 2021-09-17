@@ -77,7 +77,7 @@ module.exports = {
     personalInfo: {
       name: "YuYan",
       avatar: "/img/avatar.jpg",
-      description: "A confused soul trying to live with understanding",
+      description: "欢迎来到宇言的小木屋",
       sns: {
         github: "YuYanzy",
         linkedin: "yu-zhang-a02b1a168",
