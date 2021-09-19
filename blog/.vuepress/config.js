@@ -25,21 +25,16 @@ module.exports = {
     },
     searchIcon: "ri-search-2-line",
     codeTheme: "gungnir-dark",
-    // rss: {
-    //   site_url: "https://zxh.io",
-    //   copyright: "Renovamen 2018-2021",
-    //   count: 20
-    // },
-    // comment: {
-    //   owner: "This-is-an-Apple",
-    //   repo: "gitalk-comments",
-    //   clientId: "d6247712dc288a5a60ca",
-    //   clientSecret: "ed1ec72417828343c79ed910a1b77d140fa715a7"
-    // },
-    // analytics: {
-    //   ga: "UA-146858305-1",
-    //   ba: "75381d210789d3eaf855fa16246860cc"
-    // },
+    comment: {
+      platform: "github",
+      owner: "YuYanzy",
+      repo: "blog-comments",
+      clientId: "e48d58b81f77f56d858d",
+      clientSecret: "ca7eed5366016f1504ae57df2e5f17dca360567b"
+    },
+    analytics: {
+      ga: "G-S8Z80T8NCY",
+    },
     katex: true,
     mdPlus: {
       all: true
