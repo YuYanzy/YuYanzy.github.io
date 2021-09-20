@@ -33,7 +33,7 @@ module.exports = {
       clientSecret: "ca7eed5366016f1504ae57df2e5f17dca360567b"
     },
     analytics: {
-      ga: "G-S8Z80T8NCY",
+      ga: "UA-207981937-1",
     },
     katex: true,
     mdPlus: {
